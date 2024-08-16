@@ -35,7 +35,7 @@ func main() {
 
         router.Use(Authenticate_API())
 
-	router.POST("/CLIENT_LOGGING_NEED_URL", Process_Client_Log)
+	router.POST("/client-logging/api/v1/post", Process_Client_Log)
 
         /* Non-TLS */
 
