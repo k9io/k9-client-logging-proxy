@@ -26,6 +26,7 @@ import (
         "io/ioutil"
         "log"
         "net/http"
+	"time"
 
         "github.com/gin-gonic/gin"
 )
@@ -45,7 +46,7 @@ func Process_Client_Log(c *gin.Context) {
                 return
 	}
 
-        client := http.Client{}
+	client := http.Client{ Timeout: time.Duration( Config.Core.Connection_Timeout ) * time.Second, }
 
         api_key_temp := fmt.Sprintf("%s:%s", c.GetString("company_uuid"), c.GetString("api_key"))
         url_tmp := fmt.Sprintf("%s%s", Config.Core.Address, c.Request.URL.Path)
